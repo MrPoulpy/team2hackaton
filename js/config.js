@@ -1,23 +1,4 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Chess</title>
-		<link rel="stylesheet" href="css/chessboard-0.3.0.css" />
-		<link rel="stylesheet" href="css/main.css" />
 
-		<script src="js/chess.js"></script>
-		<script src="js/json3.min.js"></script>
-		<script src="js/jquery-1.10.1.min.js"></script>
-		<script src="js/chessboard-0.3.0.js"></script>
-	</head>
-	<body>
-		<div id="board" style="width: 400px"></div>
-		
-<input type="button" id="ruyLopezBtn" value="Ruy Lopez" />
-	</body>
-	<script>
 var game;
 var cfg = {
 	draggable: true,
@@ -167,7 +148,3 @@ var init = function() {
 	cfg.onMouseoverSquare = onMouseoverSquare;
 	board = new ChessBoard('board', cfg);
 };
-
-$(document).ready(init);
-	</script>
-</html>
