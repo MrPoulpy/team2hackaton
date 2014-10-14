@@ -18,14 +18,36 @@
 <input type="button" id="ruyLopezBtn" value="Ruy Lopez" />
 	</body>
 	<script>
+var game;
+var cfg = {
+	draggable: true,
+	position: 'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 1',
+	ai: true,
+	highlight: true
+};
 
 var init = function() {
-
+	
 	var board;
 	var boardEl = $('#board');
-	var game = new Chess();
+	game = new Chess(cfg.position);
 	var squareToHighlight;
 
+	var removeGreySquares = function() {
+		$('#board .square-55d63').css('background', '');
+	};
+
+	var greySquare = function(square) {
+		var squareEl = $('#board .square-' + square);
+  
+		var background = '#a9a9a9';
+		if (squareEl.hasClass('black-3c85d') === true) {
+			background = '#696969';
+		}
+
+		squareEl.css('background', background);
+	};
+	
 	var removeHighlights = function(color) {
 		boardEl.find('.square-55d63').removeClass('highlight-' + color);
 	};
@@ -43,7 +65,10 @@ var init = function() {
 
 		// game over
 		if (possibleMoves.length === 0) {
-			console.log("win");
+			if (game.in_checkmate())
+				console.log("win");
+			else
+				console.log("pat");
 			return;
 		}
 
@@ -58,9 +83,23 @@ var init = function() {
 
 		// update the board to the new position
 		board.position(game.fen());
+		var possibleMoves = game.moves({
+			verbose: true
+		});
+
+		// game over
+		if (possibleMoves.length === 0) {
+			if (game.in_checkmate())
+				console.log("lose");
+			else
+				console.log("pat");
+			return;
+		}
 	};
 
 	var onDrop = function(source, target) {
+		 removeGreySquares();
+	
 		// see if the move is legal
 		var move = game.move({
 			from: source,
@@ -77,7 +116,37 @@ var init = function() {
 		boardEl.find('.square-' + target).addClass('highlight-white');
 
 		// make random move for black
-		window.setTimeout(makeRandomMove, 250);
+		if (cfg.ai == false) {
+			game.load(game.fen().replace(' b ', ' w '));
+			removeHighlights('black');
+		} else
+			window.setTimeout(makeRandomMove, 250);
+		
+	};
+	
+	var onMouseoverSquare = function(square, piece) {
+		if (cfg.highlight == false)
+			return ;
+		// get list of possible moves for this square
+		var moves = game.moves({
+			square: square,
+			verbose: true
+		});
+
+		// exit if there are no moves available for this square
+		if (moves.length === 0) return;
+
+		// highlight the square they moused over
+		greySquare(square);
+
+		// highlight the possible squares for this piece
+		for (var i = 0; i < moves.length; i++) {
+			greySquare(moves[i].to);
+		}
+	};
+	
+	var onMouseoutSquare = function(square, piece) {
+		removeGreySquares();
 	};
 
 	var onMoveEnd = function() {
@@ -90,18 +159,13 @@ var init = function() {
 		board.position(game.fen());
 	};
 
-	var cfg = {
-		draggable: true,
-		position: '2k5/8/8/8/8/8/8/QQQ5',
-		//		position: 'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R',
-		onDragStart: onDragStart,
-		onDrop: onDrop,
-		onMoveEnd: onMoveEnd,
-		onSnapEnd: onSnapEnd
-	};
-	
+	cfg.onDragStart = onDragStart;
+	cfg.onDrop = onDrop;
+	cfg.onMoveEnd = onMoveEnd;
+	cfg.onSnapEnd = onSnapEnd;
+	cfg.onMouseoutSquare = onMouseoutSquare;
+	cfg.onMouseoverSquare = onMouseoverSquare;
 	board = new ChessBoard('board', cfg);
-	console.log(game.load(cfg.position+' w - - 0 1'));
 };
 
 $(document).ready(init);

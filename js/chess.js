@@ -1532,6 +1532,10 @@ window['Chess'] = window['Chess'] || function(fen) {
       return turn;
     },
 
+	setTurn: function(value) {
+		turn = value;
+	},
+	
     move: function(move) {
       /* The move function can be called with in the following parameters:
        *
