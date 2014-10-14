@@ -33,6 +33,7 @@ body
 	line-height: 1;
 	font-size: 12px;
 	background: white;
+	position: relative;
 }
 ol, ul
 {
@@ -60,16 +61,17 @@ table
 }
 
 html {
-	background: #333;
-}
-
-body {
-	height: 768px;
+	height: 712px;
 	width: 1024px;
-	margin: auto auto;
-	box-shadow: 0 0 3px 3px rgba(0,0,0,0.35);
 }
 
+#board_cont {
+	border: 20px #aaa solid;
+	width: 600px;
+	margin: 36px auto 0 auto;
+	height: 600px;
+	float: left;
+}
 
 .highlight-white {
   -webkit-box-shadow: inset 0 0 3px 3px #bcbcbc;
@@ -82,5 +84,68 @@ body {
   box-shadow: inset 0 0 3px 3px black;  
 }
 
+ul {
+	height: 300px;
+	width: 162px;
+	float: left;
+}
 
+li {
+	width: 50px;
+	height: 50px;
+	margin-left: 29px;
+	background: #999;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: inline-block;
+}
 
+.opponent {
+	margin-right: 30px;
+	margin-top: 56px;
+}
+
+.opponent li {
+	margin-bottom: 30px;
+}
+
+.player li {
+	margin-top: 30px;
+}
+
+.player {
+	margin-top: 328px;
+}
+
+.opponent .profil,
+.player .profil {
+	background: #232323;
+}
+
+.profil {
+	width: 57px;
+	height: 57px;
+	margin-left: 67px;
+}
+
+#notif {
+	z-index: 2;
+	position: absolute;
+	right: 32px;
+	top: 36px;
+	width: 80px;
+	height: 80px;
+}
+
+.prof {
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	background: #3e3;
+}
+
+/*.popup {
+	padding: 10px;
+	border-radius: 5px;
+	border: 2px solid #000;
+}*/

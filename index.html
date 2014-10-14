@@ -3,9 +3,12 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>Échec et Maths</title>
 		<link rel="stylesheet" href="css/chessboard-0.3.0.css" />
 		<link rel="stylesheet" href="css/main.css" />
+
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 		<script src="js/chess.js"></script>
 		<script src="js/json3.min.js"></script>
@@ -14,11 +17,35 @@
 		<script src="js/config.js"></script>
 	</head>
 	<body>
-		<div id="board" style="width: 600px"></div>
+		<div id="notif">
+			<span class="prof"></span>
+			<span class="popup"></span>
+		</div>
+		<ul class="opponent">
+			<li class="piece_K"></li>
+			<li class="piece_Q"></li>
+			<li class="piece_B"></li>
+			<li class="piece_N"></li>
+			<li class="piece_R"></li>
+			<li class="piece_P"></li>
+			<li class="profil"></li>
+		</ul>
+		<div id="board_cont">
+			<div id="board" style="width: 600px"></div>
+		<div id="selected"></div>
+		</div>
+		<ul class="player">
+			<li class="profil"></li>
+			<li class="piece_K"></li>
+			<li class="piece_Q"></li>
+			<li class="piece_B"></li>
+			<li class="piece_N"></li>
+			<li class="piece_R"></li>
+			<li class="piece_P"></li>
+		</ul>
 		<div id="selected"></div>
 	</body>
 	<script>
-	
 var game;
 var selected = [];
 var cfg;
@@ -26,6 +53,17 @@ var cfg;
 $(document).ready(loadJson('save.json', function(data) {
 	cfg = data;
 	init(data);
+	$('#button').on("click", function() {
+	    var
+	          el = document.documentElement
+	        , rfs =
+	               el.requestFullScreen
+	            || el.webkitRequestFullScreen
+	            || el.mozRequestFullScreen
+	    ;
+	    rfs.call(el);
+	});
 }));
+
 	</script>
 </html>
