@@ -33,6 +33,7 @@ body
 	line-height: 1;
 	font-size: 12px;
 	background: white;
+	position: relative;
 }
 ol, ul
 {
@@ -60,15 +61,14 @@ table
 }
 
 html {
-	height: 768px;
+	height: 712px;
 	width: 1024px;
-	border: 1px black solid;
 }
 
 #board_cont {
 	border: 20px #aaa solid;
 	width: 600px;
-	margin: 92px auto 0 auto;
+	margin: 36px auto 0 auto;
 	height: 600px;
 	float: left;
 }
@@ -102,7 +102,7 @@ li {
 
 .opponent {
 	margin-right: 30px;
-	margin-top: 112px;
+	margin-top: 56px;
 }
 
 .opponent li {
@@ -114,7 +114,38 @@ li {
 }
 
 .player {
-	margin-top: 384px;
-	/* margin-top: 472px; */
+	margin-top: 328px;
 }
 
+.opponent .profil,
+.player .profil {
+	background: #232323;
+}
+
+.profil {
+	width: 57px;
+	height: 57px;
+	margin-left: 67px;
+}
+
+#notif {
+	z-index: 2;
+	position: absolute;
+	right: 32px;
+	top: 36px;
+	width: 80px;
+	height: 80px;
+}
+
+.prof {
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	background: #3e3;
+}
+
+/*.popup {
+	padding: 10px;
+	border-radius: 5px;
+	border: 2px solid #000;
+}*/
