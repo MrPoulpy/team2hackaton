@@ -14,6 +14,8 @@
 	</head>
 	<body>
 		<div id="board" style="width: 400px"></div>
+		
+<input type="button" id="ruyLopezBtn" value="Ruy Lopez" />
 	</body>
 	<script>
 
@@ -40,7 +42,10 @@ var init = function() {
 		});
 
 		// game over
-		if (possibleMoves.length === 0) return;
+		if (possibleMoves.length === 0) {
+			console.log("win");
+			return;
+		}
 
 		var randomIndex = Math.floor(Math.random() * possibleMoves.length);
 		var move = possibleMoves[randomIndex];
@@ -87,7 +92,8 @@ var init = function() {
 
 	var cfg = {
 		draggable: true,
-		position: 'start',
+		position: '2k5/8/8/8/8/8/8/QQQ5',
+		//		position: 'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R',
 		onDragStart: onDragStart,
 		onDrop: onDrop,
 		onMoveEnd: onMoveEnd,
@@ -95,6 +101,7 @@ var init = function() {
 	};
 	
 	board = new ChessBoard('board', cfg);
+	console.log(game.load(cfg.position+' w - - 0 1'));
 };
 
 $(document).ready(init);
