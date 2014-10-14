@@ -4,8 +4,8 @@
 	"highlight": true,
 	"selectionable": false,
 	"theme": {
-		"w": "classic",
-		"b": "classic"
+		"w": "white",
+		"b": "black"
 	},
 	"turn": "w",
 	"color": "b"
