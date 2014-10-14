@@ -9,35 +9,75 @@
 		<script src="js/json3.min.js"></script>
 		<script src="js/jquery-1.10.1.min.js"></script>
 		<script src="js/chessboard-0.3.0.js"></script>
+		<script src="js/FileServer.js"></script>
 	</head>
 	<body>
 		<div id="board" style="width: 400px"></div>
-		<input type="button" id="startBtn" value="Start" onClick="javascript: onDrop();" />
-		<input type="button" id="clearBtn" value="Clear" onClick="javascript: onDrop();" />
-		<div id="fen"></div>
+		<input type="button" id="startBtn" value="Start" />
+		<input type="button" id="clearBtn" value="Clear" />
+		<input type="button" id="flipOrientationBtn" value="Flip orientation" />
+		<form>
+			<input type="radio" id="turnw" name="turn" value="w" onClick="javascript: cfg.turn='w';">Blanc commence<br>
+			<input type="radio" id="turnb" name="turn" value="b" onClick="javascript: cfg.turn='b';">Noire commence
+		</form>
+		<input type="checkbox" id="ai" onClick="javascript: cfg.ai = !cfg.ai;">Intelligence artificielle</input>
+		<input type="checkbox" id="highlight" onClick="javascript: cfg.highlight = !cfg.highlight;">Afficher les position possibles</input>
+		<input type="checkbox" id="selectionable" onClick="javascript: cfg.selectionable = !cfg.selectionable;">Bloquer le jeu</input>
+		<input type="button" value="Sauvegarder" onClick="javascript: save()" />
 	</body>
 	<script>
 
 var board;
+var cfg;
+
+function save() {
+	var toSave = {
+		position: board.fen(),
+		ai: document.getElementById('ai').checked,
+		highlight: document.getElementById('highlight').checked,
+		selectionable: document.getElementById('selectionable').checked,
+		theme: {
+			w: "classic",
+			b: "classic"
+		},
+		turn: (document.getElementById('turnw').checked ? "w" : "b"),
+		color: cfg.color
+	};
+	JSON.stringify(toSave);
+}
+
+function loadJson(file, func) {
+	$.getJSON(file, function(data) {
+		func(data);
+	}).fail(function(err) {
+		console.log(err);
+	});
+}
+
+loadJson("save.json", function(data) {
+	cfg = data;
+	cfg.pieceTheme = function(piece) {
+		return ('img/chesspieces/'+(piece.indexOf('w') > -1?cfg.theme.w:cfg.theme.b)+'/'+piece+'.png');
+	};
+
+	document.getElementById('turnw').checked = (cfg.turn == 'w');
+	document.getElementById('turnb').checked = (cfg.turn == 'b');
+	document.getElementById('ai').checked = cfg.ai;
+	document.getElementById('highlight').checked = cfg.highlight;
+	document.getElementById('selectionable').checked = cfg.selectionable;
 	
-var onDrop = function(source, target, piece, newPos, oldPos, orientation) {
-	setTimeout(function() {
-		document.getElementById('fen').innerHTML = board.fen();
-	}, 250);
-};
+	board = new ChessBoard('board', cfg);
 
-board = new ChessBoard('board', {
-  draggable: true,
-  dropOffBoard: 'trash',
-  sparePieces: true,
-  onDrop: onDrop
+	$('#startBtn').on('click', board.start);
+	$('#clearBtn').on('click', board.clear);
+	$('#flipOrientationBtn').on('click', function() {
+		if (cfg.color == 'w')
+			cfg.color = 'b';
+		else
+			cfg.color = 'w';
+		board.flip();
+	});
 });
-
-$('#startBtn').on('click', board.start);
-
-$('#clearBtn').on('click', board.clear);
-
-document.getElementById('fen').innerHTML = board.fen();
 
 	</script>
 </html>

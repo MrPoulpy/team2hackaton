@@ -1,26 +1,21 @@
 
-var cgf;
+function loadJson(file, func) {
+	$.getJSON(file, function(data) {
+		data.draggable = true;
+		func(data);
+	}).fail(function(err) {
+		console.log(err);
+	});
+}
 
 function pieceTheme(piece) {
 	return ('img/chesspieces/'+(piece.indexOf('w') > -1?cfg.theme.w:cfg.theme.b)+'/'+piece+'.png');
 }
 
-var game;
-cfg = {
-	draggable: true,
-	position: 'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 1',
-	ai: true,
-	highlight: true,
-	selectionable: true,
-	theme: {
-		w: 'default',
-		b: 'null'
-	},
-	pieceTheme: pieceTheme
-};
-var selected = [];
+function init(cfg) {
 
-var init = function() {
+	cfg.pieceTheme = pieceTheme;
+	cfg.position =  cfg.position + ' ' + cfg.turn + ' KQkq - 0 1';
 	
 	var board;
 	var boardEl = $('#board');
@@ -34,9 +29,9 @@ var init = function() {
 	var greySquare = function(square) {
 		var squareEl = $('#board .square-' + square);
   
-		var background = '#a9a9a9';
+		var background = 'rgba(169, 169, 169, 0.5)';
 		if (squareEl.hasClass('black-3c85d') === true) {
-			background = '#696969';
+			background = 'rgba(105, 105, 105, 0.5)';
 		}
 
 		squareEl.css('background', background);
@@ -47,7 +42,8 @@ var init = function() {
 	};
 
 	var onDragStart = function(source, piece, position, orientation) {
-		if (game.in_checkmate() === true || game.in_draw() === true || piece.search(/^b/) !== -1) {
+		onMouseoverSquare(source, piece);
+		if (game.in_checkmate() === true || game.in_draw() === true || (cfg.color == 'w' ? piece.search(/^b/) : piece.search(/^w/)) !== -1) {
 			return (false);
 		}
 	};
@@ -92,7 +88,8 @@ var init = function() {
 	};
 
 	var onDrop = function(source, target) {
-		 removeGreySquares();
+		onMouseoutSquare(source, target);
+		removeGreySquares();
 	
 		if (cfg.selectionable == true) {
 			if (boardEl.find('.square-' + source)[0].classList.contains(".highlighted")) {
@@ -133,7 +130,7 @@ var init = function() {
 
 		// make random move for black
 		if (cfg.ai == false) {
-			game.load(game.fen().replace(' b ', ' w '));
+			game.load(game.fen().replace((cfg.color == 'w'?' b ':' w '), (cfg.color == 'w'?' w ':' b ')));
 			removeHighlights('black');
 		} else
 			window.setTimeout(makeRandomMove, 250);
@@ -179,7 +176,10 @@ var init = function() {
 	cfg.onDrop = onDrop;
 	cfg.onMoveEnd = onMoveEnd;
 	cfg.onSnapEnd = onSnapEnd;
-	cfg.onMouseoutSquare = onMouseoutSquare;
-	cfg.onMouseoverSquare = onMouseoverSquare;
 	board = new ChessBoard('board', cfg);
+	if (cfg.color == 'b')
+		board.orientation('black');
+	if ((cfg.color == 'b' && cfg.turn == 'w') || (cfg.color == 'w' && cfg.turn == 'b')) {
+		makeRandomMove();
+	}
 };

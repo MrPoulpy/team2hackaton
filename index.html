@@ -14,10 +14,18 @@
 		<script src="js/config.js"></script>
 	</head>
 	<body>
-		<div id="board" style="width: 400px"></div>
+		<div id="board" style="width: 600px"></div>
 		<div id="selected"></div>
 	</body>
 	<script>
-		$(document).ready(init);
+	
+var game;
+var selected = [];
+var cfg;
+
+$(document).ready(loadJson('save.json', function(data) {
+	cfg = data;
+	init(data);
+}));
 	</script>
 </html>
