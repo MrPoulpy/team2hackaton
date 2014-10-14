@@ -14,7 +14,7 @@ cfg = {
 	selectionable: true,
 	theme: {
 		w: 'default',
-		b: 'null'
+		b: 'classic'
 	},
 	pieceTheme: pieceTheme
 };
