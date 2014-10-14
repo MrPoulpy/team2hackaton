@@ -4,8 +4,10 @@ var cfg = {
 	draggable: true,
 	position: 'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 1',
 	ai: true,
-	highlight: true
+	highlight: true,
+	selectionable: true
 };
+var selected = [];
 
 var init = function() {
 	
@@ -81,6 +83,28 @@ var init = function() {
 	var onDrop = function(source, target) {
 		 removeGreySquares();
 	
+		if (cfg.selectionable == true) {
+			if (boardEl.find('.square-' + source)[0].classList.contains(".highlighted")) {
+				boardEl.find('.square-' + source).removeClass('highlight-white');
+				boardEl.find('.square-' + source).removeClass('.highlighted');
+				array.splice(array.indexOf(item), 1);
+			} else {
+				boardEl.find('.square-' + source).addClass('highlight-white');
+				boardEl.find('.square-' + source).addClass('.highlighted');
+				selected.push(source);
+			}
+			
+			selected.sort();
+			
+			var print = '';
+			var it = 0;
+			while (it != selected.length) {
+				print = print + selected[it] + ' ';
+				++it;
+			}
+			document.getElementById('selected').innerHTML = print;
+			return ;
+		}
 		// see if the move is legal
 		var move = game.move({
 			from: source,
