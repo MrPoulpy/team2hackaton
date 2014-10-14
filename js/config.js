@@ -1,11 +1,22 @@
 
+var cgf;
+
+function pieceTheme(piece) {
+	return ('img/chesspieces/'+(piece.indexOf('w') > -1?cfg.theme.w:cfg.theme.b)+'/'+piece+'.png');
+}
+
 var game;
-var cfg = {
+cfg = {
 	draggable: true,
 	position: 'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 1',
 	ai: true,
 	highlight: true,
-	selectionable: true
+	selectionable: true,
+	theme: {
+		w: 'default',
+		b: 'null'
+	},
+	pieceTheme: pieceTheme
 };
 var selected = [];
 
@@ -87,7 +98,7 @@ var init = function() {
 			if (boardEl.find('.square-' + source)[0].classList.contains(".highlighted")) {
 				boardEl.find('.square-' + source).removeClass('highlight-white');
 				boardEl.find('.square-' + source).removeClass('.highlighted');
-				array.splice(array.indexOf(item), 1);
+				selected.splice(selected.indexOf(source), 1);
 			} else {
 				boardEl.find('.square-' + source).addClass('highlight-white');
 				boardEl.find('.square-' + source).addClass('.highlighted');
