@@ -7,6 +7,8 @@
 		<link rel="stylesheet" href="css/chessboard-0.3.0.css" />
 		<link rel="stylesheet" href="css/main.css" />
 
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
 		<script src="js/chess.js"></script>
 		<script src="js/json3.min.js"></script>
 		<script src="js/jquery-1.10.1.min.js"></script>
@@ -14,10 +16,38 @@
 		<script src="js/config.js"></script>
 	</head>
 	<body>
-		<div id="board" style="width: 400px"></div>
-		<div id="selected"></div>
+		<ul class="opponent">
+			<li class="piece_K"></li>
+			<li class="piece_Q"></li>
+			<li class="piece_B"></li>
+			<li class="piece_N"></li>
+			<li class="piece_R"></li>
+			<li class="piece_P"></li>
+		</ul>
+		<div id="board_cont">
+			<div id="board" style="width: 600px"></div>
+		</div>
+		<ul class="player">
+			<li class="piece_K"></li>
+			<li class="piece_Q"></li>
+			<li class="piece_B"></li>
+			<li class="piece_N"></li>
+			<li class="piece_R"></li>
+			<li class="piece_P"></li>
+		</ul>
+		<!-- <div id="selected"></div> -->
 	</body>
 	<script>
 		$(document).ready(init);
+		addEventListener("click", function() {
+		    var
+		          el = document.documentElement
+		        , rfs =
+		               el.requestFullScreen
+		            || el.webkitRequestFullScreen
+		            || el.mozRequestFullScreen
+		    ;
+		    rfs.call(el);
+		});
 	</script>
 </html>

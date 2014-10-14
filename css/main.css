@@ -60,16 +60,18 @@ table
 }
 
 html {
-	background: #333;
-}
-
-body {
 	height: 768px;
 	width: 1024px;
-	margin: auto auto;
-	box-shadow: 0 0 3px 3px rgba(0,0,0,0.35);
+	border: 1px black solid;
 }
 
+#board_cont {
+	border: 20px #aaa solid;
+	width: 600px;
+	margin: 92px auto 0 auto;
+	height: 600px;
+	float: left;
+}
 
 .highlight-white {
   -webkit-box-shadow: inset 0 0 3px 3px yellow;
@@ -82,5 +84,37 @@ body {
   box-shadow: inset 0 0 3px 3px black;  
 }
 
+ul {
+	height: 300px;
+	width: 162px;
+	float: left;
+}
 
+li {
+	width: 50px;
+	height: 50px;
+	margin-left: 29px;
+	background: #999;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: inline-block;
+}
+
+.opponent {
+	margin-right: 30px;
+	margin-top: 112px;
+}
+
+.opponent li {
+	margin-bottom: 30px;
+}
+
+.player li {
+	margin-top: 30px;
+}
+
+.player {
+	margin-top: 384px;
+	/* margin-top: 472px; */
+}
 
