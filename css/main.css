@@ -65,10 +65,14 @@ html {
 	width: 1024px;
 }
 
+body {
+	background: url(../img/background_chess.png);
+	background-repeat: no-repeat;
+}
+
 #board_cont {
-	border: 20px #aaa solid;
 	width: 600px;
-	margin: 36px auto 0 auto;
+	margin: 56px auto 0 20px;
 	height: 600px;
 	float: left;
 }
@@ -114,18 +118,21 @@ li {
 }
 
 .player {
-	margin-top: 328px;
-}
-
-.opponent .profil,
-.player .profil {
-	background: #232323;
+	margin-top: 239px;
 }
 
 .profil {
-	width: 57px;
-	height: 57px;
-	margin-left: 67px;
+	width: 160px;
+	height: 160px;
+	margin-left: 15px;
+}
+
+.opponent .profil {
+	background: url('../img/blasons/black.png');
+}
+
+.player .profil {
+	background: url('../img/blasons/blue.png');
 }
 
 #notif {
@@ -142,6 +149,10 @@ li {
 	height: 80px;
 	border-radius: 40px;
 	background: #3e3;
+}
+
+.piece_Q {
+	margin-left: 70px;
 }
 
 /*.popup {
