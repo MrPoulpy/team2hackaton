@@ -23,6 +23,11 @@ function addEatedPiece(piece) {
 }
 
 function init(cfg) {
+
+	document.getElementsByClassName('victory')[0].style.display = 'none';
+	document.getElementsByClassName('pat')[0].style.display = 'none';
+	document.getElementsByClassName('defeat')[0].style.display = 'none';
+
 	var profils = document.getElementsByClassName('popup');
 	profils[0].innerHTML = cfg.order;
 
@@ -88,9 +93,9 @@ function init(cfg) {
 		// game over
 		if (possibleMoves.length === 0) {
 			if (game.in_checkmate())
-				console.log("win");
+				document.getElementsByClassName('victory')[0].style.display = 'block';
 			else
-				console.log("pat");
+				document.getElementsByClassName('pat')[0].style.display = 'block';
 			return;
 		}
 
@@ -110,13 +115,13 @@ function init(cfg) {
 		var possibleMoves = game.moves({
 			verbose: true
 		});
-
+		
 		// game over
 		if (possibleMoves.length === 0) {
 			if (game.in_checkmate())
-				console.log("lose");
+				document.getElementsByClassName('defeat')[0].style.display = 'block';
 			else
-				console.log("pat");
+				document.getElementsByClassName('pat')[0].style.display = 'block';
 			return;
 		}
 	};
