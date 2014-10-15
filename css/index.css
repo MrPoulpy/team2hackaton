@@ -122,6 +122,9 @@ html {
 	width: 160px;
 	color: white;
 	text-align: center;
+	font-family: Roboto;
+	font-size: 24px;
+	text-transform: uppercase;
 }
 
 a {
