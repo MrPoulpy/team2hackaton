@@ -156,6 +156,24 @@ li {
 	margin-left: 70px;
 }
 
+.bulle_notif {
+	border-radius: 13px ;
+	border: 1px #000 solid;
+	background: rgba(255,255,255,0.65);
+	width: 26px;
+	height: 26px;
+	margin-top: 35px;
+	margin-left: 35px;
+}
+
+.bulle_notif span {
+	font-size: 20px;
+	vertical-align: middle;
+	font-family: Roboto;
+	text-align: center;
+	margin-left: 7px;
+}
+
 /*.popup {
 	padding: 10px;
 	border-radius: 5px;
