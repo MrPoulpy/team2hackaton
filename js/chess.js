@@ -162,6 +162,10 @@ window['Chess'] = window['Chess'] || function(fen) {
   var history = [];
   var header = {};
 
+  function getKingb() {
+	return (kings.b != EMPTY);
+  }
+  
   /* if the user passes in a fen string, load it, else default to
    * starting position
    */
@@ -463,6 +467,8 @@ window['Chess'] = window['Chess'] || function(fen) {
   function generate_moves(options) {
     function add_move(board, moves, from, to, flags) {
       /* if pawn promotion */
+	  if (!board[from])
+		return [];
       if (board[from].type === PAWN &&
          (rank(to) === RANK_8 || rank(to) === RANK_1)) {
           var pieces = [QUEEN, ROOK, BISHOP, KNIGHT];

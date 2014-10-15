@@ -14,7 +14,7 @@ function pieceTheme(piece) {
 
 function addEatedPiece(piece) {
 	var profils = document.getElementsByClassName('piece_'+piece.type.toUpperCase());
-	var profil = profils[(piece.color == 'b') * 1];
+	var profil = profils[(piece.color == 'w') * 1];
 	profil.style.visibility = 'visible';
 	var val = (parseInt(profil.childNodes[0].childNodes[0].innerHTML) + 1);
 	if (val == 2)
@@ -100,16 +100,16 @@ function init(cfg) {
 				document.getElementsByClassName('victory')[0].style.display = 'block';
 				if (parseInt(game.fen().split(' ')[5]) == 4)
 					document.getElementById('berger').classList.add('discover');
-			} else
+			} else if (game.getKingb())
 				document.getElementsByClassName('pat')[0].style.display = 'block';
 			return;
 		}
 
 		var randomIndex = Math.floor(Math.random() * possibleMoves.length);
 		var move = possibleMoves[randomIndex];
+		game.move(move.san);
 		var piece = game.get(move.to);
 		if (piece) addEatedPiece(piece);
-		game.move(move.san);
 
 		// highlight black's move
 		removeHighlights('black');
@@ -127,7 +127,7 @@ function init(cfg) {
 		if (possibleMoves.length === 0) {
 			if (game.in_checkmate())
 				document.getElementsByClassName('defeat')[0].style.display = 'block';
-			else
+			else if (game.getKingb())
 				document.getElementsByClassName('pat')[0].style.display = 'block';
 			return;
 		}
@@ -160,9 +160,6 @@ function init(cfg) {
 			return ;
 		}
 		
-		var piece = game.get(target);
-		if (piece && source != target) addEatedPiece(piece);
-		
 		// see if the move is legal
 		var move = game.move({
 			from: source,
@@ -172,6 +169,9 @@ function init(cfg) {
 
 		// illegal move
 		if (move === null) return 'snapback';
+		var piece = game.get(target);
+		if (piece && source != target) addEatedPiece(piece);
+		
 		var profils = document.getElementsByClassName('echec');
 		profils[0].style.display = (game.in_check() ? 'block' : 'none');
 

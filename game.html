@@ -84,6 +84,20 @@ function getQueryVariable(variable) {
     console.log('Query variable %s not found', variable);
 }
 
+function load(file) {
+	if (game)
+		delete game;
+	if (selected)
+		delete selected;
+	if (cfg)
+		delete cfg;
+	loadJson(getQueryVariable(file), function(data) {
+		document.oncontextmenu = new Function("return false");
+		cfg = data;
+		init(data);
+	});
+}
+
 $(document).ready(loadJson(getQueryVariable("file"), function(data) {
 	document.oncontextmenu = new Function("return false");
 	cfg = data;
