@@ -13,7 +13,27 @@ function pieceTheme(piece) {
 }
 
 function init(cfg) {
+	var profils = document.getElementsByClassName('profil');
+	profils[0].style.background = 'url(\'img/blasons/'+cfg.theme.b+'.png\')';
+	profils[1].style.background = 'url(\'img/blasons/'+cfg.theme.w+'.png\')';
 
+	var profils = document.getElementsByClassName('piece_B');
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bB.png\'); background-size: contain;';
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wB.png\'); background-size: contain;';
+	var profils = document.getElementsByClassName('piece_N');
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bN.png\'); background-size: contain;';
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wN.png\'); background-size: contain;';
+	var profils = document.getElementsByClassName('piece_R');
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bR.png\'); background-size: contain;';
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wR.png\'); background-size: contain;';
+	var profils = document.getElementsByClassName('piece_P');
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bP.png\'); background-size: contain;';
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wP.png\'); background-size: contain;';
+	var profils = document.getElementsByClassName('piece_Q');
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bQ.png\'); background-size: contain;';
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wQ.png\'); background-size: contain;';
+
+	
 	cfg.pieceTheme = pieceTheme;
 	cfg.position =  cfg.position + ' ' + cfg.turn + ' KQkq - 0 1';
 	

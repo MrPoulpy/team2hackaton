@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
 	"position": "r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R",
 	"ai": false,
@@ -10,17 +9,4 @@
 	},
 	"turn": "w",
 	"color": "b"
-=======
-{
-	"position": "r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R",
-	"ai": false,
-	"highlight": true,
-	"selectionable": false,
-	"theme": {
-		"w": "white",
-		"b": "black"
-	},
-	"turn": "w",
-	"color": "b"
->>>>>>> FETCH_HEAD
 }
