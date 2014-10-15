@@ -19,10 +19,15 @@
 	<body>
 		<div class="echec"></div>
 		<div class="echec"></div>
+
+		<div id="roque"></div>
+		<div id="berger"></div>
+
 		<div id="notif">
 			<span class="prof"></span>
 			<span class="popup"></span>
 		</div>
+
 		<ul class="opponent">
 			<li class="piece_B"><div class="bulle_notif"><span>0</span></div></li>
 			<li class="piece_N"><div class="bulle_notif"><span>0</span></div></li>
@@ -31,9 +36,11 @@
 			<li class="piece_Q"><div class="bulle_notif"><span>0</span></div></li>
 			<li class="profil"><span class="name">Guillaume</span></li>
 		</ul>
+
 		<div id="board_cont">
 			<div id="board" style="width: 600px"></div>
 		</div>
+
 		<ul class="player">
 			<li class="profil"><span class="name">Bob</span></li>
 			<li class="piece_Q"><div class="bulle_notif"><span>0</span></div></li>
@@ -86,6 +93,7 @@ $(document).ready(loadJson(getQueryVariable("file"), function(data) {
 	$('#notif').click(function(){
 		$('.popup').toggle();
 	});
+
 
 	</script>
 </html>
