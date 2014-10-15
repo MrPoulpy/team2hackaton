@@ -249,3 +249,34 @@ li {
 .echec {
 
 }
+
+#roque,
+#berger {
+    position: absolute;
+    z-index: 98;
+    top: 40px;
+    right: -350px;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden; 
+    height: 87px;
+    width: 350px;
+}
+
+@-webkit-keyframes slideDown {
+    0%, 100% { -webkit-transform: translateX(0px); }
+    10%, 90% { -webkit-transform: translateX(-350px); }
+}
+
+.discover {
+    -webkit-transform: translateX(0px);
+    -webkit-animation: slideDown 5.0s 1.0s 1 ease forwards;
+}
+
+#roque {
+	background: url('../img/achievements/roque.png');
+}
+
+#berger {
+	background: url('../img/achievements/berger.png');
+}
