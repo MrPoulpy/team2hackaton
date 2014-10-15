@@ -164,6 +164,7 @@ li {
 	height: 26px;
 	margin-top: 35px;
 	margin-left: 35px;
+	visibility: hidden;
 }
 
 .bulle_notif span {
