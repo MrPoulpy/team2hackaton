@@ -22,21 +22,18 @@
 			<span class="popup"></span>
 		</div>
 		<ul class="opponent">
-			<li class="piece_K"></li>
-			<li class="piece_Q"></li>
 			<li class="piece_B"></li>
 			<li class="piece_N"></li>
 			<li class="piece_R"></li>
 			<li class="piece_P"></li>
+			<li class="piece_Q"></li>
 			<li class="profil"></li>
 		</ul>
 		<div id="board_cont">
 			<div id="board" style="width: 600px"></div>
-		<div id="selected"></div>
 		</div>
 		<ul class="player">
 			<li class="profil"></li>
-			<li class="piece_K"></li>
 			<li class="piece_Q"></li>
 			<li class="piece_B"></li>
 			<li class="piece_N"></li>
@@ -44,13 +41,26 @@
 			<li class="piece_P"></li>
 		</ul>
 		<div id="selected"></div>
+
 	</body>
 	<script>
 var game;
 var selected = [];
 var cfg;
 
-$(document).ready(loadJson('save.json', function(data) {
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
+
+$(document).ready(loadJson(getQueryVariable("file"), function(data) {
 	cfg = data;
 	init(data);
 	$('#button').on("click", function() {

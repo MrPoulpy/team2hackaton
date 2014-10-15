@@ -38,16 +38,16 @@
 .white-1e1d7 {
 /*   background-color: #f0d9b5;
   color: #b58863; */
-  background-color: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 1);
 }
 
 /* black square */
 .black-3c85d {
  /*  background-color: #b58863;
   color: #f0d9b5; */
-  background-color: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: rgba(255, 255, 255, 1);
 }
 
 /* highlighted square */
@@ -60,9 +60,11 @@
 /* notation */
 .notation-322f9 {
   cursor: default;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
   position: absolute;
+  font-style: bold;
+  text-transform: uppercase;
 }
 .alpha-d2270 {
   bottom: 1px;

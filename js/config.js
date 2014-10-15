@@ -12,24 +12,7 @@ function pieceTheme(piece) {
 	return ('img/chesspieces/'+(piece.indexOf('w') > -1?cfg.theme.w:cfg.theme.b)+'/'+piece+'.png');
 }
 
-<<<<<<< Updated upstream
 function init(cfg) {
-=======
-var game;
-cfg = {
-	draggable: true,
-	position: 'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 1',
-	ai: true,
-	highlight: true,
-	selectionable: false,
-	theme: {
-		w: 'white',
-		b: 'black'
-	},
-	pieceTheme: pieceTheme
-};
-var selected = [];
->>>>>>> Stashed changes
 
 	cfg.pieceTheme = pieceTheme;
 	cfg.position =  cfg.position + ' ' + cfg.turn + ' KQkq - 0 1';
