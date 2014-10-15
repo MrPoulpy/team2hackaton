@@ -14,7 +14,7 @@ function pieceTheme(piece) {
 
 function addEatedPiece(piece) {
 	var profils = document.getElementsByClassName('piece_'+piece.type.toUpperCase());
-	var profil = profils[(piece.color == 'w') * 1];
+	var profil = profils[(piece.color == 'b') * 1];
 	profil.style.visibility = 'visible';
 	var val = (parseInt(profil.childNodes[0].childNodes[0].innerHTML) + 1);
 	if (val == 2)
@@ -107,8 +107,8 @@ function init(cfg) {
 
 		var randomIndex = Math.floor(Math.random() * possibleMoves.length);
 		var move = possibleMoves[randomIndex];
-		game.move(move.san);
 		var piece = game.get(move.to);
+		game.move(move.san);
 		if (piece) addEatedPiece(piece);
 
 		// highlight black's move
@@ -161,6 +161,7 @@ function init(cfg) {
 		}
 		
 		// see if the move is legal
+		var piece = game.get(target);
 		var move = game.move({
 			from: source,
 			to: target,
@@ -169,7 +170,6 @@ function init(cfg) {
 
 		// illegal move
 		if (move === null) return 'snapback';
-		var piece = game.get(target);
 		if (piece && source != target) addEatedPiece(piece);
 		
 		var profils = document.getElementsByClassName('echec');

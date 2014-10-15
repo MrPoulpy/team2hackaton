@@ -79,6 +79,8 @@ html {
 }
 
 #exo {
+	position: relative;
+	top: 150px;
 	display: inline-block;
 	width: 160px;
 	height: 200px;
@@ -92,6 +94,8 @@ html {
 }
 
 #jeu {
+	position: relative;
+	top: 150px;
 	display: inline-block;
 	width: 160px;
 	height: 200px;
@@ -129,4 +133,11 @@ html {
 
 a {
 	text-decoration: none;
+}
+
+img {
+	float: left;
+	position: absolute;
+	left: 362px;
+	top: 50px;
 }
