@@ -147,14 +147,9 @@ li {
 	top: 36px;
 	width: 80px;
 	height: 80px;
+	background: url('../img/prof.png');
 }
 
-.prof {
-	width: 80px;
-	height: 80px;
-	border-radius: 40px;
-	background: #3e3;
-}
 
 .piece_Q {
 	margin-left: 70px;
@@ -194,8 +189,16 @@ li {
 	background-color: yellow;
 }
 
-/*.popup {
-	padding: 10px;
+.popup {
+	padding: 10px 15px;
 	border-radius: 5px;
-	border: 2px solid #000;
-}*/
+	min-width: 250px;
+	background: rgba(210,210,210,0.85);
+	border: 1px solid rgba(0,158,226,0.85);
+	z-index: 3;
+	position: absolute;
+	right: 70px;
+	font-family: Roboto;
+	color: #3c3c3b;
+	line-height: 16px;
+}
