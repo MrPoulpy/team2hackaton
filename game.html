@@ -61,6 +61,7 @@ function getQueryVariable(variable) {
 }
 
 $(document).ready(loadJson(getQueryVariable("file"), function(data) {
+	document.oncontextmenu = new Function("return false");
 	cfg = data;
 	init(data);
 	$('#button').on("click", function() {
