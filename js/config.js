@@ -180,7 +180,7 @@ function init(cfg) {
 		boardEl.find('.square-' + source).addClass('highlight-white');
 		boardEl.find('.square-' + target).addClass('highlight-white');
 
-		if( ( game.fen().match(/KQkq+/g)) == null ){
+		if( ( game.fen().match(/.*r.*r.*R.*R.*KQ.*/g) ) == null ){
 			document.getElementById('roque').classList.add('discover');
 		}
 
