@@ -96,9 +96,11 @@ function init(cfg) {
 
 		// game over
 		if (possibleMoves.length === 0) {
-			if (game.in_checkmate())
+			if (game.in_checkmate()) {
 				document.getElementsByClassName('victory')[0].style.display = 'block';
-			else
+				if (parseInt(game.fen().split(' ')[5]) == 4)
+					document.getElementById('berger').classList.add('discover');
+			} else
 				document.getElementsByClassName('pat')[0].style.display = 'block';
 			return;
 		}
