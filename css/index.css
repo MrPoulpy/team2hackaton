@@ -69,36 +69,52 @@ html {
 	display: inline-block;
 	width: 160px;
 	height: 200px;
-	background: url(../img/menu/tuto_160x160.png) top center no-repeat;
+	background: url(../img/menu/tuto.png) top center no-repeat;
 	margin-left: 48px;
 	margin-top: 245px;
+}
+
+#tuto:hover {
+	background: url(../img/menu/tuto_hover.png) top center no-repeat;
 }
 
 #exo {
 	display: inline-block;
 	width: 160px;
 	height: 200px;
-	background: url(../img/menu/exo_160x160.png) top center no-repeat;
+	background: url(../img/menu/exo.png) top center no-repeat;
 	margin-left: 96px;
 	margin-top: 245px;
+}
+
+#exo:hover {
+	background: url(../img/menu/exo_hover.png) top center no-repeat;
 }
 
 #jeu {
 	display: inline-block;
 	width: 160px;
 	height: 200px;
-	background: url(../img/menu/jeu_160x160.png) top center no-repeat;
+	background: url(../img/menu/jeu.png) top center no-repeat;
 	margin-left: 96px;
 	margin-top: 245px;
+}
+
+#jeu:hover {
+	background: url(../img/menu/jeu_hover.png) top center no-repeat;
 }
 
 #trophee {
 	display: inline-block;
 	width: 160px;
 	height: 200px;
-	background: url(../img/menu/trophee_160x160.png) top center no-repeat;
+	background: url(../img/menu/trophee.png) top center no-repeat;
 	margin-left: 96px;
 	margin-top: 245px;
+}
+
+#trophee:hover {
+	background: url(../img/menu/trophee_hover.png) top center no-repeat;
 }
 
 .text {
