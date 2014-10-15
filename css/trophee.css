@@ -76,6 +76,10 @@ body {
 	display: inline-block;
 }
 
+.left img {
+	margin: 48px 32px 0;
+}
+
 .left p {
 	position: relative;
 	top: 283px;
