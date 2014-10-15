@@ -111,10 +111,12 @@ li {
 
 .opponent li {
 	margin-bottom: 30px;
+	visibility: hidden;
 }
 
 .player li {
 	margin-top: 30px;
+	visibility: hidden;
 }
 
 .player {
@@ -130,10 +132,12 @@ li {
 
 .opponent .profil {
 	background: url('../img/blasons/red.png');
+	visibility: visible;
 }
 
 .player .profil {
 	background: url('../img/blasons/gold.png');
+	visibility: visible;
 }
 
 #notif {
