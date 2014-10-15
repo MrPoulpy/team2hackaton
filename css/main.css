@@ -65,10 +65,14 @@ html {
 	width: 1024px;
 }
 
+body {
+	background: url(../img/background_chess.png);
+	background-repeat: no-repeat;
+}
+
 #board_cont {
-	border: 20px #aaa solid;
 	width: 600px;
-	margin: 36px auto 0 auto;
+	margin: 56px auto 0 20px;
 	height: 600px;
 	float: left;
 }
@@ -107,25 +111,33 @@ li {
 
 .opponent li {
 	margin-bottom: 30px;
+	visibility: hidden;
 }
 
 .player li {
 	margin-top: 30px;
+	visibility: hidden;
 }
 
 .player {
-	margin-top: 328px;
-}
-
-.opponent .profil,
-.player .profil {
-	background: #232323;
+	margin-top: 239px;
 }
 
 .profil {
-	width: 57px;
-	height: 57px;
-	margin-left: 67px;
+	width: 160px;
+	height: 160px;
+	margin-left: 15px;
+}
+
+
+.opponent .profil {
+	background: url('../img/blasons/red.png');
+	visibility: visible;
+}
+
+.player .profil {
+	background: url('../img/blasons/gold.png');
+	visibility: visible;
 }
 
 #notif {
@@ -142,6 +154,44 @@ li {
 	height: 80px;
 	border-radius: 40px;
 	background: #3e3;
+}
+
+.piece_Q {
+	margin-left: 70px;
+}
+
+.bulle_notif {
+	border-radius: 13px ;
+	border: 1px #000 solid;
+	background: rgba(255,255,255,0.65);
+	width: 26px;
+	height: 26px;
+	margin-top: 35px;
+	margin-left: 35px;
+	visibility: hidden;
+}
+
+.bulle_notif span {
+	font-size: 20px;
+	vertical-align: middle;
+	font-family: Roboto;
+	text-align: center;
+	margin-left: 7px;
+}
+
+.name {
+	font-family: Roboto;
+	font-size: 20px;
+	color: #3c3c3b;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.15);
+	margin-top: 72px;
+	display: block;
+	text-align: center;
+}
+
+.highlighted {
+	background-color: yellow;
 }
 
 /*.popup {

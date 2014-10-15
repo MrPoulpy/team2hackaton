@@ -22,35 +22,46 @@
 			<span class="popup"></span>
 		</div>
 		<ul class="opponent">
-			<li class="piece_K"></li>
-			<li class="piece_Q"></li>
-			<li class="piece_B"></li>
-			<li class="piece_N"></li>
-			<li class="piece_R"></li>
-			<li class="piece_P"></li>
-			<li class="profil"></li>
+			<li class="piece_B"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="piece_N"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="piece_R"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="piece_P"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="piece_Q"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="profil"><span class="name">Guillaume</span></li>
 		</ul>
 		<div id="board_cont">
 			<div id="board" style="width: 600px"></div>
-		<div id="selected"></div>
 		</div>
 		<ul class="player">
-			<li class="profil"></li>
-			<li class="piece_K"></li>
-			<li class="piece_Q"></li>
-			<li class="piece_B"></li>
-			<li class="piece_N"></li>
-			<li class="piece_R"></li>
-			<li class="piece_P"></li>
+			<li class="profil"><span class="name">Bob</span></li>
+			<li class="piece_Q"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="piece_B"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="piece_N"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="piece_R"><div class="bulle_notif"><span>0</span></div></li>
+			<li class="piece_P"><div class="bulle_notif"><span>0</span></div></li>
 		</ul>
 		<div id="selected"></div>
+
 	</body>
 	<script>
 var game;
 var selected = [];
 var cfg;
 
-$(document).ready(loadJson('save.json', function(data) {
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
+
+$(document).ready(loadJson(getQueryVariable("file"), function(data) {
+	document.oncontextmenu = new Function("return false");
 	cfg = data;
 	init(data);
 	$('#button').on("click", function() {

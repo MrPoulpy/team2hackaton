@@ -12,8 +12,37 @@ function pieceTheme(piece) {
 	return ('img/chesspieces/'+(piece.indexOf('w') > -1?cfg.theme.w:cfg.theme.b)+'/'+piece+'.png');
 }
 
-function init(cfg) {
+function addEatedPiece(piece) {
+	var profils = document.getElementsByClassName('piece_'+piece.type.toUpperCase());
+	var profil = profils[(piece.color == 'b') * 1];
+	profil.style.visibility = 'visible';
+	var val = (parseInt(profil.childNodes[0].childNodes[0].innerHTML) + 1);
+	if (val == 2)
+		profil.childNodes[0].style.visibility = 'visible';
+	profil.childNodes[0].childNodes[0].innerHTML = val;
+}
 
+function init(cfg) {
+	var profils = document.getElementsByClassName('profil');
+	profils[0].style.background = 'url(\'img/blasons/'+cfg.theme.b+'.png\')';
+	profils[1].style.background = 'url(\'img/blasons/'+cfg.theme.w+'.png\')';
+
+	var profils = document.getElementsByClassName('piece_B');
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bB.png\'); background-size: contain;';
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wB.png\'); background-size: contain;';
+	var profils = document.getElementsByClassName('piece_N');
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bN.png\'); background-size: contain;';
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wN.png\'); background-size: contain;';
+	var profils = document.getElementsByClassName('piece_R');
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bR.png\'); background-size: contain;';
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wR.png\'); background-size: contain;';
+	var profils = document.getElementsByClassName('piece_P');
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bP.png\'); background-size: contain;';
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wP.png\'); background-size: contain;';
+	var profils = document.getElementsByClassName('piece_Q');
+	profils[1].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.b+'/bQ.png\'); background-size: contain;';
+	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wQ.png\'); background-size: contain;';
+	
 	cfg.pieceTheme = pieceTheme;
 	cfg.position =  cfg.position + ' ' + cfg.turn + ' KQkq - 0 1';
 	
@@ -64,6 +93,8 @@ function init(cfg) {
 
 		var randomIndex = Math.floor(Math.random() * possibleMoves.length);
 		var move = possibleMoves[randomIndex];
+		var piece = game.get(move.to);
+		if (piece) addEatedPiece(piece);
 		game.move(move.san);
 
 		// highlight black's move
@@ -92,13 +123,13 @@ function init(cfg) {
 		removeGreySquares();
 	
 		if (cfg.selectionable == true) {
-			if (boardEl.find('.square-' + source)[0].classList.contains(".highlighted")) {
+			if (boardEl.find('.square-' + source)[0].classList.contains("highlighted")) {
 				boardEl.find('.square-' + source).removeClass('highlight-white');
-				boardEl.find('.square-' + source).removeClass('.highlighted');
+				boardEl.find('.square-' + source).removeClass('highlighted');
 				selected.splice(selected.indexOf(source), 1);
 			} else {
 				boardEl.find('.square-' + source).addClass('highlight-white');
-				boardEl.find('.square-' + source).addClass('.highlighted');
+				boardEl.find('.square-' + source).addClass('highlighted');
 				selected.push(source);
 			}
 			
@@ -113,6 +144,10 @@ function init(cfg) {
 			document.getElementById('selected').innerHTML = print;
 			return ;
 		}
+		
+		var piece = game.get(target);
+		if (piece && source != target) addEatedPiece(piece);
+		
 		// see if the move is legal
 		var move = game.move({
 			from: source,

@@ -59,6 +59,10 @@ loadJson("save.json", function(data) {
 	cfg.pieceTheme = function(piece) {
 		return ('img/chesspieces/'+(piece.indexOf('w') > -1?cfg.theme.w:cfg.theme.b)+'/'+piece+'.png');
 	};
+	
+	cfg.draggable = true;
+	cfg.dropOffBoard = 'trash';
+	cfg.sparePieces = true;
 
 	document.getElementById('turnw').checked = (cfg.turn == 'w');
 	document.getElementById('turnb').checked = (cfg.turn == 'b');
