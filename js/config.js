@@ -141,7 +141,7 @@ function init(cfg) {
 				print = print + selected[it] + ' ';
 				++it;
 			}
-			document.getElementById('selected').innerHTML = print;
+//			document.getElementById('selected').innerHTML = print;
 			return ;
 		}
 		

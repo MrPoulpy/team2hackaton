@@ -9,7 +9,6 @@
 		<script src="js/json3.min.js"></script>
 		<script src="js/jquery-1.10.1.min.js"></script>
 		<script src="js/chessboard-0.3.0.js"></script>
-		<script src="js/FileServer.js"></script>
 	</head>
 	<body>
 		<div id="board" style="width: 400px"></div>
@@ -37,13 +36,16 @@ function save() {
 		highlight: document.getElementById('highlight').checked,
 		selectionable: document.getElementById('selectionable').checked,
 		theme: {
-			w: "classic",
-			b: "classic"
+			w: "white",
+			b: "black"
 		},
 		turn: (document.getElementById('turnw').checked ? "w" : "b"),
 		color: cfg.color
 	};
-	JSON.stringify(toSave);
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST","tofile.php",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("file=save.json&data="+JSON.stringify(toSave));
 }
 
 function loadJson(file, func) {
