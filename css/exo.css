@@ -1,0 +1,90 @@
+/* Reset CSS */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 'Bliss';
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section
+{
+	display: block;
+}
+body
+{
+	line-height: 1;
+	font-size: 12px;
+	background: white;
+	position: relative;
+}
+ol, ul
+{
+	list-style: none;
+}
+
+blockquote, q
+{
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after
+{
+	content: '';
+	content: none;
+}
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 0.6em;
+	background: yellow;
+	height: 105px;
+	width: 355px;
+}
+
+html {
+	height: 712px;
+	width: 1024px;
+}
+
+body {
+	background-color: #3FAF6C;
+}
+
+a {
+	position: absolute;
+	width: 160px;
+	height: 200px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+a img {
+	width: 160px;
+	height: 160px;
+}
+
+a p {
+	margin-top: 10px;
+	width: 160px;
+	color: white;
+	text-align: center;
+}
