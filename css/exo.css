@@ -75,6 +75,9 @@ a {
 	height: 200px;
 	display: inline-block;
 	text-decoration: none;
+	font-size: 20px;
+	vertical-align: middle;
+	font-family: Roboto;
 }
 
 a img {
