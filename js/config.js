@@ -23,6 +23,9 @@ function addEatedPiece(piece) {
 }
 
 function init(cfg) {
+	var profils = document.getElementsByClassName('popup');
+	profils[0].innerHTML = cfg.order;
+
 	var profils = document.getElementsByClassName('profil');
 	profils[0].style.background = 'url(\'img/blasons/'+cfg.theme.b+'.png\')';
 	profils[1].style.background = 'url(\'img/blasons/'+cfg.theme.w+'.png\')';
