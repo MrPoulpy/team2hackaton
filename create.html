@@ -22,6 +22,23 @@
 		<input type="checkbox" id="ai" onClick="javascript: cfg.ai = !cfg.ai;">Intelligence artificielle</input>
 		<input type="checkbox" id="highlight" onClick="javascript: cfg.highlight = !cfg.highlight;">Afficher les position possibles</input>
 		<input type="checkbox" id="selectionable" onClick="javascript: cfg.selectionable = !cfg.selectionable;">Bloquer le jeu</input>
+		Couleur joueur :
+		<select id="colorplayer">
+			<option value="black">Noir</option>
+			<option value="blue">Bleu</option>
+			<option value="gold">Or</option>
+			<option value="Red">Rouge</option>
+			<option value="white">White</option>
+		</select>
+		Couleur adversaire :
+		<select id="coloropponent">
+			<option value="black">Noir</option>
+			<option value="blue">Bleu</option>
+			<option value="gold">Or</option>
+			<option value="Red">Rouge</option>
+			<option value="white">White</option>
+		</select>
+		<input type="text" id="descript" placeholder="Consigne" />
 		<input type="button" value="Sauvegarder" onClick="javascript: save()" />
 	</body>
 	<script>
@@ -36,17 +53,14 @@ function save() {
 		highlight: document.getElementById('highlight').checked,
 		selectionable: document.getElementById('selectionable').checked,
 		theme: {
-			w: "white",
-			b: "black"
+			w: document.getElementById('colorplayer').value,
+			b: document.getElementById('coloropponent').value
 		},
-		order: "Mets l’adversaire échec et mat !",
+		order: document.getElementById('descript').value,
 		turn: (document.getElementById('turnw').checked ? "w" : "b"),
 		color: cfg.color
 	};
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST","tofile.php",true);
-	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("file=save.json&data="+JSON.stringify(toSave));
+	return JSON.stringify(toSave);
 }
 
 function loadJson(file, func) {

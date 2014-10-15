@@ -256,7 +256,7 @@ li {
 #roque,
 #berger {
     position: absolute;
-    z-index: 98;
+    z-index: 200;
     top: 40px;
     right: -350px;
     text-align: center;
