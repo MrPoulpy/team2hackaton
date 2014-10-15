@@ -87,3 +87,16 @@ li {
 li:not(.last) {
 	margin-right: 46px;
 }
+
+li a {
+	float: left;
+	display: block;
+	padding-top: 110px;
+	width: 100px;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	vertical-align: middle;
+	font-family: Roboto;
+}
