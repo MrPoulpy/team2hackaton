@@ -27,6 +27,10 @@ function init(cfg) {
 	document.getElementsByClassName('victory')[0].style.display = 'none';
 	document.getElementsByClassName('pat')[0].style.display = 'none';
 	document.getElementsByClassName('defeat')[0].style.display = 'none';
+	
+	var profils = document.getElementsByClassName('echec');
+	profils[0].style.display = 'none';
+	profils[1].style.display = 'none';
 
 	var profils = document.getElementsByClassName('popup');
 	profils[0].innerHTML = cfg.order;
@@ -110,12 +114,13 @@ function init(cfg) {
 		boardEl.find('.square-' + move.from).addClass('highlight-black');
 		squareToHighlight = move.to;
 
+		var profils = document.getElementsByClassName('echec');
+		profils[0].style.display = (game.in_check() ? 'block' : 'none');
 		// update the board to the new position
 		board.position(game.fen());
 		var possibleMoves = game.moves({
 			verbose: true
 		});
-		
 		// game over
 		if (possibleMoves.length === 0) {
 			if (game.in_checkmate())
@@ -165,6 +170,8 @@ function init(cfg) {
 
 		// illegal move
 		if (move === null) return 'snapback';
+		var profils = document.getElementsByClassName('echec');
+		profils[0].style.display = (game.in_check() ? 'block' : 'none');
 
 		// highlight white's move
 		removeHighlights('white');

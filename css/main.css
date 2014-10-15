@@ -247,5 +247,8 @@ li {
 }
 
 .echec {
-
+	background-color: red;
+	display: none;
+	width: 100px;
+	height: 100px;
 }
