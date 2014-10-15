@@ -179,6 +179,17 @@ li {
 	margin-left: 7px;
 }
 
+.name {
+	font-family: Roboto;
+	font-size: 20px;
+	color: #3c3c3b;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.15);
+	margin-top: 72px;
+	display: block;
+	text-align: center;
+}
+
 /*.popup {
 	padding: 10px;
 	border-radius: 5px;
