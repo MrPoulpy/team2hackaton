@@ -264,6 +264,7 @@ li {
     overflow: hidden; 
     height: 87px;
     width: 350px;
+	display: none;
 }
 
 @-webkit-keyframes slideDown {
@@ -272,6 +273,7 @@ li {
 }
 
 .discover {
+	display: block !important;
     -webkit-transform: translateX(0px);
     -webkit-animation: slideDown 5.0s 1.0s 1 ease forwards;
 }
