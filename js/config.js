@@ -22,6 +22,8 @@ function addEatedPiece(piece) {
 	profil.childNodes[0].childNodes[0].innerHTML = val;
 }
 
+var kk;
+
 function init(cfg) {
 
 	document.getElementsByClassName('victory')[0].style.display = 'none';
@@ -56,7 +58,19 @@ function init(cfg) {
 	profils[0].style.cssText = 'background: url(\'img/chesspieces/'+cfg.theme.w+'/wQ.png\'); background-size: contain;';
 	
 	cfg.pieceTheme = pieceTheme;
-	cfg.position =  cfg.position + ' ' + cfg.turn + ' KQkq - 0 1';
+	if (cfg.position.indexOf('k') > -1) {
+		if (cfg.position.indexOf('K') > -1)
+			kk = 'KQkq';
+		else
+			kk = 'kq';
+	}
+	else if (cfg.position.indexOf('K') > -1)
+		kk = 'KQ';
+	else
+		kk = '-';
+
+		console.log(kk);
+	cfg.position =  cfg.position + ' ' + cfg.turn + ' '+kk+' - 0 1';
 	
 	var board;
 	var boardEl = $('#board');
