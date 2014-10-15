@@ -247,10 +247,15 @@ li {
 }
 
 .echec {
-	background-color: red;
+	color: red;
 	display: none;
 	width: 100px;
-	height: 100px;
+	height: 50px;
+	font-family: Roboto;
+	font-size: 20px;
+	margin-left: 60px;
+	background: none;
+	visibility: visible !important;
 }
 
 #roque,
