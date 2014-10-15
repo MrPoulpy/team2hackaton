@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"position":"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR","ai":true,"highlight":true,"selectionable":false,"theme":{"w":"red","b":"gold"},"turn":"w","color":"w"}
+=======
+{"position":"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR","ai":true,"highlight":true,"selectionable":false,"theme":{"w":"white","b":"black"},"turn":"w","color":"w"}
+>>>>>>> FETCH_HEAD
