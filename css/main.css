@@ -190,9 +190,9 @@ li {
 }
 
 .popup {
-	padding: 10px 15px;
+	padding: 15px 20px;
 	border-radius: 5px;
-	min-width: 250px;
+	min-width: 300px;
 	background: rgba(210,210,210,0.85);
 	border: 1px solid rgba(0,158,226,0.85);
 	z-index: 3;
@@ -200,5 +200,6 @@ li {
 	right: 70px;
 	font-family: Roboto;
 	color: #3c3c3b;
-	line-height: 16px;
+	line-height: 18px;
+	font-size: 16px;
 }

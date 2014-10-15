@@ -63,21 +63,11 @@ $(document).ready(loadJson(getQueryVariable("file"), function(data) {
 	document.oncontextmenu = new Function("return false");
 	cfg = data;
 	init(data);
-	addEventListener("click", function() {
-	    var
-	          el = document.documentElement
-	        , rfs =
-	               el.requestFullScreen
-	            || el.webkitRequestFullScreen
-	            || el.mozRequestFullScreen
-	    ;
-	    rfs.call(el);
-	});
 }));
 
 	$('#notif').click(function(){
 		$('.popup').toggle();
-	})
+	});
 
 	</script>
 </html>
